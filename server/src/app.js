@@ -9,6 +9,7 @@ const cors = require('cors');
 
 const userRouter = require('./routes/user.routes');
 const blogRouter = require('./routes/blog.routes');
+const commentRouter = require('./routes/comment.routes');
 
 const { globalErrorHandler, ApiErrors } = require('./utils/errors');
 
@@ -48,6 +49,7 @@ app.use(compression());
 // mounting routers(middleware)
 app.use('/api/v1/en', userRouter);
 app.use('/api/v1/en', blogRouter);
+app.use('/api/v1/en', commentRouter);
 
 // handling not matched route
 app.all('*', (req, res, next) => {

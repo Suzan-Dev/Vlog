@@ -32,3 +32,21 @@ exports.resizeBlogImage = catchAsync(async (req, res, next) => {
 
   next();
 });
+
+// User
+
+exports.uploadUserImage = upload.single('image');
+
+exports.resizeUserImage = catchAsync(async (req, res, next) => {
+  if (!req.file) return next();
+
+  req.file.filename = `user-${req.user._id}-${Date.now()}.jpeg`;
+
+  await sharp(req.file.buffer)
+    .resize(400, 400)
+    .toFormat('jpeg')
+    .jpeg({ quality: 85 })
+    .toFile(`src/public/${req.file.filename}`);
+
+  next();
+});

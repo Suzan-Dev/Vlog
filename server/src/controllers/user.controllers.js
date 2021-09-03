@@ -5,18 +5,12 @@ const User = require('../models/user.model');
 const catchAsync = require('../utils/catchAsync');
 const { ApiErrors } = require('../utils/errors');
 
-exports.getUserDetails = catchAsync(async (req, res) => {
-  const user = await User.findById(req.user._id);
-
-  res
-    .status(200)
-    .json(
-      sendResponse('Success', 'Your profile is fetched successfully.', user)
-    );
-});
-
 exports.signUpUser = catchAsync(async (req, res) => {
   const { username, email, password } = req.body;
+
+  if (!username || !email || !password) {
+    return next(new ApiErrors(400, 'Please provide all the required fields.'));
+  }
 
   const user = await User.create({
     username,
@@ -37,13 +31,13 @@ exports.logInUser = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return next(new ApiErrors(400, 'Please provide an email & password!'));
+    return next(new ApiErrors(400, 'Please provide an email & password.'));
   }
 
   // check if email or password or both is incorrect
   const user = await User.findOne({ email }).select('+password');
   if (!user || !(await user.checkPassword(password, user.password))) {
-    return next(new ApiErrors(401, 'Email or password is incorrect!'));
+    return next(new ApiErrors(401, 'Email or password is incorrect.'));
   }
 
   sendSuccessResWithToken(
@@ -65,4 +59,24 @@ exports.logOutUser = catchAsync(async (req, res) => {
   res
     .status(200)
     .json(sendResponse('Success', 'You are logged out successfully.', null));
+});
+
+exports.getUserDetails = catchAsync(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  res
+    .status(200)
+    .json(
+      sendResponse('Success', 'Your profile is fetched successfully.', user)
+    );
+});
+
+exports.updateUserProfileImage = catchAsync(async (req, res) => {
+  const user = await User.findByIdAndUpdate(req.user._id, {
+    image: req.file.filename,
+  });
+
+  res
+    .status(200)
+    .json(sendResponse('Success', 'Your profile updated successfully.', user));
 });

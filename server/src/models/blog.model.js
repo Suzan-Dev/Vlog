@@ -21,14 +21,14 @@ const blogSchema = new mongoose.Schema(
     author: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: [true, 'Blog must belong to a user!'],
+      required: [true, 'Blog must belong to a user.'],
     },
     coverImage: {
       type: String,
       trim: true,
       required: false,
     },
-    tags: [{ type: String, required: false }],
+    tags: { type: String, required: false },
   },
   {
     timestamps: true,
