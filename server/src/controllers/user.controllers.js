@@ -5,19 +5,15 @@ const User = require('../models/user.model');
 const catchAsync = require('../utils/catchAsync');
 const { ApiErrors } = require('../utils/errors');
 
-// export const getUserDetails = () =>
-//   catchAsync(async (req, res) => {
+exports.getUserDetails = catchAsync(async (req, res) => {
+  const user = await User.findById(req.user._id);
 
-//     res
-//       .status(200)
-//       .json(
-//         sendResponse(
-//           'Success',
-//           `${type} successfully fetched!`,
-//           doc
-//         )
-//       );
-//   });
+  res
+    .status(200)
+    .json(
+      sendResponse('Success', 'Your profile is fetched successfully.', user)
+    );
+});
 
 exports.signUpUser = catchAsync(async (req, res) => {
   const { username, email, password } = req.body;

@@ -2,7 +2,8 @@ const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 
 const User = require('../models/user.model');
-const { catchAsync, ApiErrors } = require('./errors');
+const { ApiErrors } = require('./errors');
+const catchAsync = require('./catchAsync');
 
 exports.protectRoute = catchAsync(async (req, res, next) => {
   const { authorization } = req.headers;
