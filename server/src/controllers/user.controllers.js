@@ -72,9 +72,15 @@ exports.getUserDetails = catchAsync(async (req, res) => {
 });
 
 exports.updateUserProfileImage = catchAsync(async (req, res) => {
-  const user = await User.findByIdAndUpdate(req.user._id, {
-    image: req.file.filename,
-  });
+  const user = await User.findByIdAndUpdate(
+    req.user._id,
+    {
+      image: req.file.filename,
+    },
+    {
+      new: true,
+    }
+  );
 
   res
     .status(200)
