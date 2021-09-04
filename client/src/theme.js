@@ -17,6 +17,23 @@ const theme = createTheme({
       default: '#fff',
     },
   },
+  overrides: {
+    MuiCssBaseline: {
+      '@global': {
+        '*': {
+          boxSizing: 'border-box',
+        },
+        body: {
+          padding: 0,
+          margin: 0,
+        },
+        a: {
+          color: 'inherit',
+          textDecoration: 'none',
+        },
+      },
+    },
+  },
 });
 
 export default theme;
