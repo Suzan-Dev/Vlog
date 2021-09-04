@@ -40,11 +40,6 @@ const useStyles = makeStyles((theme) => ({
   blogRightContainer: {
     padding: theme.spacing(0, 5),
   },
-  mdContainer: {
-    fontSize: '16px',
-    lineHeight: 1.5,
-    margin: theme.spacing(6, 0),
-  },
 }));
 
 export default useStyles;

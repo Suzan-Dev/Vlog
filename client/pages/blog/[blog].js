@@ -2,6 +2,7 @@ import React from 'react';
 import { Container } from '@material-ui/core';
 import Header from '../../src/components/header/Header';
 import BlogDetail from '../../src/components/blog-detail/BlogDetail';
+import Footer from '../../src/components/footer/Footer';
 import { BACKEND_URL } from '../../src/global';
 
 export default function Home({ data }) {
@@ -9,6 +10,7 @@ export default function Home({ data }) {
     <Container>
       <Header hideSearchField />
       <BlogDetail {...data.data} />
+      <Footer />
     </Container>
   );
 }

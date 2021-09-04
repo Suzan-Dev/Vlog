@@ -10,7 +10,7 @@ import useBlogDetailStyles from './styles';
 import { BACKEND_URL } from '../../global';
 import { getAllComments } from '../../api/comments';
 import CommentList from '../comment-list/CommentList';
-import ReactMarkdown from 'react-markdown';
+import PreviewMarkdown from '../preview-markdown/PreviewMarkdown';
 
 export default function BlogDetail({
   _id,
@@ -34,8 +34,6 @@ export default function BlogDetail({
       })
       .catch((err) => console.log(err));
   }, []);
-
-  console.log('comments', comments);
 
   return (
     <div>
@@ -101,10 +99,7 @@ export default function BlogDetail({
               height: '400px',
             }}
           />
-
-          <div className={classes.mdContainer}>
-            <ReactMarkdown>{body}</ReactMarkdown>
-          </div>
+          <PreviewMarkdown source={body} />
           <CommentList comments={comments} />
         </Grid>
       </Grid>
