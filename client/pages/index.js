@@ -1,10 +1,10 @@
-import { Typography } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
+import Header from '../src/components/header/Header';
 
 export default function Home() {
   return (
-    <Typography>
-      Hello
-      <span>World!!!</span>
-    </Typography>
+    <Container>
+      <Header />
+    </Container>
   );
 }

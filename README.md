@@ -7,11 +7,12 @@ so, I only done limited features that I was asked to do.
 
 ### Backend
 
-- [express](https://expressjs.com/) as Node.js web framework
-- [mongodb](https://www.mongodb.com/) as NoSQL Database
-- [mongoose](https://mongoosejs.com/) as ODM library
+- [Express](https://expressjs.com/) as Node.js web framework
+- [MongoDB](https://www.mongodb.com/) as NoSQL Database
+- [Mongoose](https://mongoosejs.com/) as ODM library
 - Authentication done by [jwt](https://github.com/auth0/node-jsonwebtoken)
 
 ### Frontend
 
 - [Nextjs](https://nextjs.org/) as a React framework
+- [Material-UI](https://material-ui.com/) as a UI component library
