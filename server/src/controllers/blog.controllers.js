@@ -7,7 +7,7 @@ const { ApiErrors } = require('../utils/errors');
 
 exports.getAllBlogs = catchAsync(async (req, res) => {
   const { date, title } = req.query;
-  const blogsQuery = Blog.find();
+  const blogsQuery = Blog.find().select('-body');
 
   if (date) {
     date === 'ASC'
@@ -25,10 +25,19 @@ exports.getAllBlogs = catchAsync(async (req, res) => {
     .json(sendResponse('Success', 'Blogs are fetched successfully.', blogs));
 });
 
-exports.addBlog = catchAsync(async (req, res, next) => {
-  const { title, description, tags } = req.body;
+exports.getBlog = catchAsync(async (req, res) => {
+  const { id } = req.params;
+  const blog = await Blog.findOne({ _id: id });
 
-  if (!title || !description || !tags) {
+  res
+    .status(200)
+    .json(sendResponse('Success', 'Blog fetched successfully.', blog));
+});
+
+exports.addBlog = catchAsync(async (req, res, next) => {
+  const { title, description, tags, body } = req.body;
+
+  if (!title || !description || !tags || !body) {
     return next(new ApiErrors(400, 'Please provide all required fields.'));
   }
 
@@ -39,6 +48,7 @@ exports.addBlog = catchAsync(async (req, res, next) => {
     title,
     slug,
     description,
+    body,
     author: req.user._id,
     coverImage: coverImageUrl,
     tags,

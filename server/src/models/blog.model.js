@@ -18,6 +18,10 @@ const blogSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
+    body: {
+      type: String,
+      required: true,
+    },
     author: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
