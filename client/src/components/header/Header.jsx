@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -12,9 +13,16 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import router from 'next/router';
 
-export default function PrimarySearchAppBar({ blogs, setBlogs }) {
+export default function PrimarySearchAppBar({
+  blogs = [],
+  setBlogs = () => {},
+  hideSearchField = false,
+}) {
   const classes = useHeaderStyles();
+  const router = useRouter();
+
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -77,26 +85,30 @@ export default function PrimarySearchAppBar({ blogs, setBlogs }) {
     <div className={`${classes.grow} ${classes.topHeader}`}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar disableGutters>
-          <div>
-            <Image src="/logo.svg" alt="Logo" width={30} height={30} />
-          </div>
-          <Typography className={classes.title} variant="h6" noWrap>
-            log
-          </Typography>
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
+          <div className={classes.headerIcon} onClick={() => router.push('/')}>
+            <div>
+              <Image src="/logo.svg" alt="Logo" width={30} height={30} />
             </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ 'aria-label': 'search' }}
-              onChange={handleSearchInput}
-            />
+            <Typography className={classes.title} variant="h6" noWrap>
+              log
+            </Typography>
           </div>
+          {!hideSearchField && (
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
+              <InputBase
+                placeholder="Search…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                inputProps={{ 'aria-label': 'search' }}
+                onChange={handleSearchInput}
+              />
+            </div>
+          )}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="add new blog" color="primary">

@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: 0,
     },
   },
+  headerIcon: {
+    display: 'flex',
+    alignItems: 'center',
+    cursor: 'pointer',
+  },
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {

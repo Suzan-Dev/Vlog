@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -19,6 +20,11 @@ export default function RecipeReviewCard({
   createdAt,
 }) {
   const classes = useBlogCardStyles();
+  const router = useRouter();
+
+  const handleIndividualBlogRoute = () => {
+    router.push(`/blog/${slug}`);
+  };
 
   return (
     <div className={classes.cardShadow}>
@@ -27,6 +33,7 @@ export default function RecipeReviewCard({
           className={classes.media}
           image={`${BACKEND_URL}/${coverImage}`}
           title={title}
+          onClick={handleIndividualBlogRoute}
         />
         <CardContent>
           {tags.split(',').map((tag) => (
@@ -39,7 +46,11 @@ export default function RecipeReviewCard({
               {tag.toUpperCase()}
             </Typography>
           ))}
-          <Typography variant="h6" className={classes.blogTitle}>
+          <Typography
+            variant="h6"
+            className={classes.blogTitle}
+            onClick={handleIndividualBlogRoute}
+          >
             {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
