@@ -26,8 +26,8 @@ exports.getAllBlogs = catchAsync(async (req, res) => {
 });
 
 exports.getBlog = catchAsync(async (req, res) => {
-  const { id } = req.params;
-  const blog = await Blog.findOne({ _id: id });
+  const { slug } = req.params;
+  const blog = await Blog.findOne({ slug });
 
   res
     .status(200)
