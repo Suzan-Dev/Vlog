@@ -10,7 +10,7 @@ so, I only done limited features that I was asked to do.
 - [Express](https://expressjs.com/) as Node.js web framework
 - [MongoDB](https://www.mongodb.com/) as NoSQL Database
 - [Mongoose](https://mongoosejs.com/) as ODM library
-- Authentication done by [jwt](https://github.com/auth0/node-jsonwebtoken)
+- [JWT](https://github.com/auth0/node-jsonwebtoken) as a authentication library
 
 ### Frontend
 

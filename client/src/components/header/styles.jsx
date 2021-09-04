@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   },
   topHeader: {
     borderBottom: '2px solid #eee',
-    marginBottom: theme.spacing(2),
+    marginBottom: theme.spacing(4),
     '& > header': {
       boxShadow: 0,
     },

@@ -13,7 +13,7 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
-export default function PrimarySearchAppBar() {
+export default function PrimarySearchAppBar({ blogs, setBlogs }) {
   const classes = useHeaderStyles();
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -25,6 +25,16 @@ export default function PrimarySearchAppBar() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleSearchInput = (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+    const filteredBlogs = blogs.filter((blog) =>
+      blog.title.toLowerCase().includes(searchTerm)
+    );
+
+    console.log(filteredBlogs);
+    setBlogs(filteredBlogs);
   };
 
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -84,6 +94,7 @@ export default function PrimarySearchAppBar() {
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
+              onChange={handleSearchInput}
             />
           </div>
           <div className={classes.grow} />
