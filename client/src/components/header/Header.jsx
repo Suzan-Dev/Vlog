@@ -40,7 +40,6 @@ export default function Header({
       blog.title.toLowerCase().includes(searchTerm)
     );
 
-    console.log(filteredBlogs);
     setBlogs(filteredBlogs);
   };
 

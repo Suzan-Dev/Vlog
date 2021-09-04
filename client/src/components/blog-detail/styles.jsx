@@ -40,14 +40,10 @@ const useStyles = makeStyles((theme) => ({
   blogRightContainer: {
     padding: theme.spacing(0, 5),
   },
-  mdEditorPreview: {
-    boxShadow: 'none',
-    margin: theme.spacing(4, 0),
-
-    '& > div > div': {
-      overflowY: 'hidden',
-      height: 'fit-content',
-    },
+  mdContainer: {
+    fontSize: '16px',
+    lineHeight: 1.5,
+    margin: theme.spacing(6, 0),
   },
 }));
 

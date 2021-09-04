@@ -16,3 +16,7 @@ so, I only done limited features that I was asked to do.
 
 - [Nextjs](https://nextjs.org/) as a React framework
 - [Material-UI](https://material-ui.com/) as a UI component library
+
+## Time Consuming Skipped Task
+
+- The blog needed plugins to look **good** so, I skipped it.

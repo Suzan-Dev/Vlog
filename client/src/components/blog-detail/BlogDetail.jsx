@@ -8,10 +8,9 @@ import Typography from '@material-ui/core/Typography';
 import { getBlogDate } from '../../utils/dates';
 import useBlogDetailStyles from './styles';
 import { BACKEND_URL } from '../../global';
-import '@uiw/react-md-editor/markdown-editor.css';
-import '@uiw/react-markdown-preview/markdown.css';
-import dynamic from 'next/dynamic';
 import { getAllComments } from '../../api/comments';
+import CommentList from '../comment-list/CommentList';
+import ReactMarkdown from 'react-markdown';
 
 export default function BlogDetail({
   _id,
@@ -27,11 +26,6 @@ export default function BlogDetail({
   const router = useRouter();
 
   const [comments, setComments] = React.useState([]);
-
-  const MDEditor = dynamic(
-    () => import('@uiw/react-md-editor').then((mod) => mod.default),
-    { ssr: false }
-  );
 
   React.useEffect(() => {
     getAllComments(_id)
@@ -67,7 +61,11 @@ export default function BlogDetail({
           </div>
 
           <div>
-            <Typography color="textSecondary" variant="body2">
+            <Typography
+              color="textSecondary"
+              variant="body2"
+              style={{ marginBottom: '4px' }}
+            >
               DESCRIPTION
             </Typography>
             <Typography>{description}</Typography>
@@ -103,12 +101,11 @@ export default function BlogDetail({
               height: '400px',
             }}
           />
-          <MDEditor
-            value={body}
-            hideToolbar
-            preview="preview"
-            className={classes.mdEditorPreview}
-          />
+
+          <div className={classes.mdContainer}>
+            <ReactMarkdown>{body}</ReactMarkdown>
+          </div>
+          <CommentList comments={comments} />
         </Grid>
       </Grid>
     </div>
