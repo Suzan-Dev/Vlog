@@ -18,6 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     display: 'none',
+    letterSpacing: 1.75,
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },

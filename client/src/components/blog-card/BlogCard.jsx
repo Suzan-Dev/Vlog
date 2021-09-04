@@ -10,7 +10,7 @@ import useBlogCardStyles from './styles';
 import { getBlogDate } from '../../utils/dates';
 import { BACKEND_URL } from '../../global';
 
-export default function RecipeReviewCard({
+export default function BlogCard({
   title,
   slug,
   description,
