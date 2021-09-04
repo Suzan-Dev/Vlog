@@ -41,7 +41,7 @@ exports.addBlog = catchAsync(async (req, res, next) => {
     return next(new ApiErrors(400, 'Please provide all required fields.'));
   }
 
-  const slug = title.toLowerCase().replace(/ /, '-');
+  const slug = title.toLowerCase().replace(/ /g, '-');
   const coverImageUrl = req.file.filename;
 
   const blog = await Blog.create({
