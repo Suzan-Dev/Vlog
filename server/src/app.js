@@ -26,17 +26,9 @@ app.enable('trust proxy');
 
 // middleware
 app.use(cors());
-app.options('*', cors()); // for update,delete requests
+app.options('*', cors());
 app.use(helmet());
-// app.use(helmet({ contentSecurityPolicy: false }));
 
-// const apiLimiter = rateLimit({
-//   max: 100,
-//   windowMs: 60 * 60 * 1000,
-//   message: 'Too many requests from this IP, please try again after an hour!',
-// });
-
-// app.use('/api/', apiLimiter);
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
