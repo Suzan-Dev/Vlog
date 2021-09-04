@@ -1,4 +1,4 @@
-# vlog
+# vlog - A Blogging Application
 
 I made this blog app as my interview task for [Ekbana](https://ekbana.com/).
 so, I only done limited features that I was asked to do.
