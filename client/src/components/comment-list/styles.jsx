@@ -33,10 +33,6 @@ const useStyles = makeStyles((theme) => ({
   addCommentBtn: {
     display: 'flex',
     justifyContent: 'flex-end',
-
-    '& > button': {
-      color: '#fff',
-    },
   },
 }));
 

@@ -3,8 +3,8 @@ import React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import useCommentListStyles from './styles';
-import { Button } from '@material-ui/core';
 import CommentCard from '../comment-card/CommentCard';
+import CustomButton from '../button/Button';
 
 export default function CommentList({ comments }) {
   const classes = useCommentListStyles();
@@ -27,9 +27,7 @@ export default function CommentList({ comments }) {
           ></textarea>
         </div>
         <div className={classes.addCommentBtn}>
-          <Button variant="contained" color="primary">
-            Add Comment
-          </Button>
+          <CustomButton>Add Comment</CustomButton>
         </div>
 
         <div>

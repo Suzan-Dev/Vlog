@@ -64,7 +64,7 @@ export default function Header({
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        <p>Logout</p>
       </MenuItem>
       <MenuItem className={classes.mobilePopoverItem}>
         <IconButton

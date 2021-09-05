@@ -7,7 +7,7 @@ const { ApiErrors } = require('../utils/errors');
 
 exports.getAllBlogs = catchAsync(async (req, res) => {
   const { date, title } = req.query;
-  const blogsQuery = Blog.find().select('-body');
+  const blogsQuery = Blog.find().select('-body').sort('-createdAt');
 
   if (date) {
     date === 'ASC'
