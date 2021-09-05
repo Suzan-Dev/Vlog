@@ -19,6 +19,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import CustomButton from '../../button/Button';
 import { alertFirstSentence } from '../../../global';
 import WelcomeSection from '../welcome-section/WelcomeSection';
+import { loginUser } from '../../../api/auth';
 
 export default function Login() {
   const classes = useLoginStyles();
@@ -47,15 +48,23 @@ export default function Login() {
     setValues({ ...values, checked: event.target.checked });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
     if (!values.email || !values.password) {
       return alert(`${alertFirstSentence}Please fill up all the fields.`);
     }
 
-    // api hit
-    console.log('values', values);
+    const loginData = await loginUser(values.email, values.password);
+    if (loginData.status === 'Success') {
+      // if (values.checked) {
+      localStorage.setItem('userDetails', JSON.stringify(loginData.data));
+      // }
+
+      router.push('/');
+    } else {
+      alert(`${alertFirstSentence}${loginData.message}`);
+    }
   };
 
   return (

@@ -5,10 +5,18 @@ import Typography from '@material-ui/core/Typography';
 import useCommentListStyles from './styles';
 import CommentCard from '../comment-card/CommentCard';
 import CustomButton from '../button/Button';
+import { BACKEND_URL } from '../../global';
+import { getUserDetails } from '../../utils/storage';
 
 export default function CommentList({ comments }) {
   const classes = useCommentListStyles();
   // const router = useRouter();
+
+  const [userDetails, setUserDetails] = React.useState(null);
+
+  React.useEffect(() => {
+    setUserDetails(getUserDetails());
+  }, []);
 
   return (
     <div className={classes.commentsContainer}>
@@ -16,8 +24,10 @@ export default function CommentList({ comments }) {
       <div>
         <div className={classes.addCommentSection}>
           <Avatar
-            alt="Remy Sharp"
-            src="http://localhost:8000/user-6132ec5f3d0d95b12642664e-1630727713654.jpeg"
+            alt={userDetails?.username || ''}
+            src={
+              userDetails?.image ? `${BACKEND_URL}/${userDetails?.image}` : ''
+            }
           />
           <textarea
             name="comment"
@@ -27,7 +37,9 @@ export default function CommentList({ comments }) {
           ></textarea>
         </div>
         <div className={classes.addCommentBtn}>
-          <CustomButton>Add Comment</CustomButton>
+          <CustomButton disabled={userDetails === null}>
+            Add Comment
+          </CustomButton>
         </div>
 
         <div>

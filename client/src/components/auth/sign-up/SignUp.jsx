@@ -19,6 +19,7 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import CustomButton from '../../button/Button';
 import { alertFirstSentence } from '../../../global';
 import WelcomeSection from '../welcome-section/WelcomeSection';
+import { signUpUser } from '../../../api/auth';
 
 export default function SignUp() {
   const classes = useSignUpStyles();
@@ -49,7 +50,7 @@ export default function SignUp() {
     setValues({ ...values, checked: event.target.checked });
   };
 
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
     if (values.checked) {
@@ -66,8 +67,17 @@ export default function SignUp() {
         return alert(`${alertFirstSentence}Passwords didn't matched.`);
       }
 
-      // api hit
-      console.log('values', values);
+      const signUpData = await signUpUser(
+        values.username,
+        values.email,
+        values.password
+      );
+      if (signUpData.status === 'Success') {
+        localStorage.setItem('userDetails', JSON.stringify(signUpData.data));
+        router.push('/');
+      } else {
+        alert(`${alertFirstSentence}${signUpData.message}`);
+      }
     }
   };
 

@@ -13,7 +13,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SortBlog from '../sort-blog/SortBlog';
+import { Avatar } from '@material-ui/core';
+import { alertFirstSentence, BACKEND_URL } from '../../global';
+import { getUserDetails } from '../../utils/storage';
 
 export default function Header({
   blogs = [],
@@ -24,6 +28,7 @@ export default function Header({
   const router = useRouter();
 
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [userDetails, setUserDetails] = React.useState(null);
 
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -80,13 +85,30 @@ export default function Header({
     </Menu>
   );
 
+  const handleLogOut = () => {
+    localStorage.removeItem('userDetails');
+    location.reload();
+  };
+
+  const handleAddBlog = () => {
+    if (userDetails) {
+      // if add blog btn is clicked
+    } else {
+      alert(`${alertFirstSentence}You need to be logged in.`);
+    }
+  };
+
+  React.useEffect(() => {
+    setUserDetails(getUserDetails());
+  }, []);
+
   return (
     <div className={`${classes.grow} ${classes.topHeader}`}>
       <AppBar position="static" color="transparent" elevation={0}>
         <Toolbar disableGutters>
           <div className={classes.headerIcon} onClick={() => router.push('/')}>
             <div>
-              <Image src="/logo.svg" alt="Logo" width={30} height={30} />
+              <Image src="/logo.svg" alt="Logo" width={20} height={20} />
             </div>
             <Typography className={classes.title} variant="h5" noWrap>
               log
@@ -113,16 +135,52 @@ export default function Header({
             {!hideUnnecessaryField && (
               <SortBlog blogs={blogs} setBlogs={setBlogs} />
             )}
-            <IconButton aria-label="add new blog" color="primary">
+            <IconButton
+              aria-label="add new blog"
+              color="primary"
+              onClick={handleAddBlog}
+            >
               <AddCircleOutlineIcon />
             </IconButton>
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            {userDetails ? (
+              <>
+                <IconButton
+                  aria-label="logout"
+                  color="primary"
+                  onClick={handleLogOut}
+                >
+                  <ExitToAppIcon />
+                </IconButton>
+                <IconButton
+                  edge="end"
+                  aria-label="account of current user"
+                  color="inherit"
+                >
+                  <Avatar
+                    alt={userDetails.username}
+                    src={`${BACKEND_URL}/${userDetails.image}`}
+                    style={{
+                      height: 30,
+                      width: 30,
+                    }}
+                  />
+                </IconButton>
+              </>
+            ) : (
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                color="inherit"
+                onClick={() => router.push('/auth/login')}
+              >
+                <AccountCircle
+                  style={{
+                    height: 30,
+                    width: 30,
+                  }}
+                />
+              </IconButton>
+            )}
           </div>
           <div className={classes.sectionMobile}>
             <IconButton

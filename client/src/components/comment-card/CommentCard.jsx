@@ -13,7 +13,10 @@ export default function CommentCard({ comment }) {
 
   return (
     <div className={classes.commentCardContainer}>
-      <Avatar alt="Remy Sharp" src={`${BACKEND_URL}/${comment.author.image}`} />
+      <Avatar
+        alt={comment.author.username}
+        src={`${BACKEND_URL}/${comment.author.image}`}
+      />
       <div>
         <div>
           <Typography color="primary" className={classes.authorName}>

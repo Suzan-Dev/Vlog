@@ -25,3 +25,4 @@ so, I only done limited features that I was asked to do.
 - Used **JavaScript** instead of **TypeScript** as I think for small projects and working alone, TypeScript is **overkill**.
 - Used Nextjs **SSR** for fetching **individual blog** and **blog list**.
 - Used Material-UI for **fast** and **easier** UI development.
+- No **State Management** library is used as I was running out of time.
