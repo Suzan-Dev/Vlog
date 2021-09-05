@@ -1,6 +1,8 @@
 # Vlog - A Blogging Application
 
-![LightHouse Report](client/public/lighthouse-report.png)
+<p align="center">
+  <img src="client/public/lighthouse-report.png">
+</p>
 
 I made this blog app as my interview task for [Ekbana](https://ekbana.com/).
 so, I only done limited features that I was asked to do within **3 days**.
