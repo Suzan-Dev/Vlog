@@ -1,7 +1,7 @@
 # Vlog - A Blogging Application
 
 I made this blog app as my interview task for [Ekbana](https://ekbana.com/).
-so, I only done limited features that I was asked to do.
+so, I only done limited features that I was asked to do within **3 days**.
 
 ## Technologies Used
 
@@ -20,9 +20,9 @@ so, I only done limited features that I was asked to do.
 
 ## Things to consider
 
-- All pages are responsive.
 - Used own Backend.
 - Used **JavaScript** instead of **TypeScript** as I think for small projects and working alone, TypeScript is **overkill**.
 - Used Nextjs **SSR** for fetching **individual blog** and **blog list**.
 - Used Material-UI for **fast** and **easier** UI development.
 - No **State Management** library is used as I was running out of time.
+- I didn't have time or might have forgot to make some pages responsive.

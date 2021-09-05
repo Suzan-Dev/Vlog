@@ -8,3 +8,5 @@ export const TITLE_Z_TO_A = 'TITLE_Z_TO_A';
 
 export const alertFirstSentence =
   "** I know Google just broke the web by temporarily removing the alert function but I didn't had time for this! **\n \n";
+
+export const TOKEN = 'vlogToken';

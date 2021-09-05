@@ -1,18 +1,44 @@
 import React from 'react';
-// import { useRouter } from 'next/router';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import useCommentListStyles from './styles';
 import CommentCard from '../comment-card/CommentCard';
 import CustomButton from '../button/Button';
-import { BACKEND_URL } from '../../global';
+import { alertFirstSentence, BACKEND_URL } from '../../global';
 import { getUserDetails } from '../../utils/storage';
+import { addComment } from '../../api/comments';
 
-export default function CommentList({ comments }) {
+export default function CommentList({ comments = [], setComments = () => {} }) {
   const classes = useCommentListStyles();
-  // const router = useRouter();
 
   const [userDetails, setUserDetails] = React.useState(null);
+  const [commentBody, setCommentBody] = React.useState('');
+
+  const handleAddComment = async () => {
+    if (!commentBody) {
+      return alert(
+        `${alertFirstSentence}Please write down something before adding.`
+      );
+    }
+
+    const commentData = await addComment(commentBody, comments[0].blog);
+    if (commentData.status === 'Success') {
+      const newCommentsArr = [...comments];
+      newCommentsArr.unshift({
+        ...commentData.data,
+        author: {
+          _id: userDetails._id,
+          username: userDetails.username,
+          image: userDetails.image,
+        },
+      });
+
+      setComments(newCommentsArr);
+      setCommentBody('');
+    } else {
+      alert(`${alertFirstSentence}${commentData.message}`);
+    }
+  };
 
   React.useEffect(() => {
     setUserDetails(getUserDetails());
@@ -34,10 +60,15 @@ export default function CommentList({ comments }) {
             cols="30"
             rows="10"
             placeholder="Type your comment here..."
+            value={commentBody}
+            onChange={(e) => setCommentBody(e.target.value)}
           ></textarea>
         </div>
         <div className={classes.addCommentBtn}>
-          <CustomButton disabled={userDetails === null}>
+          <CustomButton
+            disabled={userDetails === null}
+            onClick={handleAddComment}
+          >
             Add Comment
           </CustomButton>
         </div>

@@ -17,7 +17,7 @@ import {
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import CustomButton from '../../button/Button';
-import { alertFirstSentence } from '../../../global';
+import { alertFirstSentence, TOKEN } from '../../../global';
 import WelcomeSection from '../welcome-section/WelcomeSection';
 import { loginUser } from '../../../api/auth';
 
@@ -59,6 +59,7 @@ export default function Login() {
     if (loginData.status === 'Success') {
       // if (values.checked) {
       localStorage.setItem('userDetails', JSON.stringify(loginData.data));
+      document.cookie = `${TOKEN}=${loginData.token}`;
       // }
 
       router.push('/');

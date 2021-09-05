@@ -17,7 +17,7 @@ import {
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import CustomButton from '../../button/Button';
-import { alertFirstSentence } from '../../../global';
+import { alertFirstSentence, TOKEN } from '../../../global';
 import WelcomeSection from '../welcome-section/WelcomeSection';
 import { signUpUser } from '../../../api/auth';
 
@@ -74,6 +74,7 @@ export default function SignUp() {
       );
       if (signUpData.status === 'Success') {
         localStorage.setItem('userDetails', JSON.stringify(signUpData.data));
+        document.cookie = `${TOKEN}=${loginData.token}`;
         router.push('/');
       } else {
         alert(`${alertFirstSentence}${signUpData.message}`);

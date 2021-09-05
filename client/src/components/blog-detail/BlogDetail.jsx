@@ -99,7 +99,7 @@ export default function BlogDetail({
             }}
           />
           <PreviewMarkdown source={body} />
-          <CommentList comments={comments} />
+          <CommentList comments={comments} setComments={setComments} />
         </Grid>
       </Grid>
     </div>

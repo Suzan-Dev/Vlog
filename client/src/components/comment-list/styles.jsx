@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 5,
 
       '&:focus': {
-        color: 'red',
         outline: 'none',
         border: `2px solid ${theme.palette.primary.main}`,
       },

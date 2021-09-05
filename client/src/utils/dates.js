@@ -14,11 +14,11 @@ export const getBlogDate = (isoStringDate) => {
     'December',
   ];
 
-  const date = new Date(isoStringDate);
+  const convertedDate = new Date(isoStringDate);
 
-  const year = date.getFullYear();
-  const month = months[date.getMonth()];
-  const day = date.getDay();
+  const year = convertedDate.getFullYear();
+  const month = months[convertedDate.getMonth()];
+  const date = convertedDate.getDate();
 
-  return `${month} ${day}, ${year}`;
+  return `${month} ${date}, ${year}`;
 };

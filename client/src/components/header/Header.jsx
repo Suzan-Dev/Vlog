@@ -16,7 +16,7 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import SortBlog from '../sort-blog/SortBlog';
 import { Avatar } from '@material-ui/core';
-import { alertFirstSentence, BACKEND_URL } from '../../global';
+import { alertFirstSentence, BACKEND_URL, TOKEN } from '../../global';
 import { getUserDetails } from '../../utils/storage';
 
 export default function Header({
@@ -87,6 +87,7 @@ export default function Header({
 
   const handleLogOut = () => {
     localStorage.removeItem('userDetails');
+    document.cookie = `${TOKEN}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     location.reload();
   };
 
