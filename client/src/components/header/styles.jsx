@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex',
+      alignItems: 'center',
     },
   },
   sectionMobile: {

@@ -35,6 +35,13 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(15),
     },
   },
+  demoLoginCredential: {
+    backgroundColor: theme.palette.primary.main,
+    color: '#fff',
+    padding: theme.spacing(2),
+    borderRadius: 10,
+    marginTop: theme.spacing(2),
+  },
   cursorPointer: {
     cursor: 'pointer',
     fontWeight: 'bold',

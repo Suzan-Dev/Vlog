@@ -5,7 +5,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '16px',
     lineHeight: 1.6,
     letterSpacing: 0.6,
-    margin: theme.spacing(6, 0),
+    margin: theme.spacing(3, 0),
+    overflowY: 'auto',
   },
   mdCodeBlock: {
     backgroundColor: '#333',

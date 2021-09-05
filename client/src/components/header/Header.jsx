@@ -49,6 +49,20 @@ export default function Header({
     setBlogs(filteredBlogs);
   };
 
+  const handleLogOut = () => {
+    localStorage.removeItem('userDetails');
+    document.cookie = `${TOKEN}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    location.reload();
+  };
+
+  const handleAddBlog = () => {
+    if (userDetails) {
+      router.push('/blog/add-blog');
+    } else {
+      alert(`${alertFirstSentence}You need to be logged in.`);
+    }
+  };
+
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -60,23 +74,47 @@ export default function Header({
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem className={classes.mobilePopoverItem}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
+      {userDetails ? (
+        <MenuItem className={classes.mobilePopoverItem} onClick={handleLogOut}>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="primary"
+          >
+            <Avatar
+              alt={userDetails.username}
+              src={`${BACKEND_URL}/${userDetails.image}`}
+              style={{
+                height: 25,
+                width: 25,
+              }}
+            />
+          </IconButton>
+          <p>Logout</p>
+        </MenuItem>
+      ) : (
+        <MenuItem
+          className={classes.mobilePopoverItem}
+          onClick={() => router.push('/auth/login')}
         >
-          <AccountCircle />
-        </IconButton>
-        <p>Logout</p>
-      </MenuItem>
-      <MenuItem className={classes.mobilePopoverItem}>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="primary"
+          >
+            <AccountCircle />
+          </IconButton>
+          <p>Login</p>
+        </MenuItem>
+      )}
+      <MenuItem className={classes.mobilePopoverItem} onClick={handleAddBlog}>
         <IconButton
           aria-label="add new blog"
           aria-controls="primary-add-blog-menu"
           aria-haspopup="true"
-          color="inherit"
+          color="primary"
         >
           <AddCircleOutlineIcon />
         </IconButton>
@@ -84,20 +122,6 @@ export default function Header({
       </MenuItem>
     </Menu>
   );
-
-  const handleLogOut = () => {
-    localStorage.removeItem('userDetails');
-    document.cookie = `${TOKEN}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    location.reload();
-  };
-
-  const handleAddBlog = () => {
-    if (userDetails) {
-      // if add blog btn is clicked
-    } else {
-      alert(`${alertFirstSentence}You need to be logged in.`);
-    }
-  };
 
   React.useEffect(() => {
     setUserDetails(getUserDetails());
@@ -155,7 +179,7 @@ export default function Header({
                 <IconButton
                   edge="end"
                   aria-label="account of current user"
-                  color="inherit"
+                  color="primary"
                 >
                   <Avatar
                     alt={userDetails.username}
@@ -171,7 +195,7 @@ export default function Header({
               <IconButton
                 edge="end"
                 aria-label="account of current user"
-                color="inherit"
+                color="primary"
                 onClick={() => router.push('/auth/login')}
               >
                 <AccountCircle
@@ -189,7 +213,7 @@ export default function Header({
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}
-              color="inherit"
+              color="primary"
             >
               <MoreIcon />
             </IconButton>

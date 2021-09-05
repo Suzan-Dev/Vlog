@@ -4,7 +4,7 @@ const useStyles = makeStyles((theme) => ({
   commentCardContainer: {
     margin: theme.spacing(3, 0),
     display: 'flex',
-    alignItems: 'center',
+    alignContent: 'center',
 
     '& > div:last-child': {
       marginLeft: theme.spacing(2),

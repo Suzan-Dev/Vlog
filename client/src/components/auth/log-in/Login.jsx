@@ -87,6 +87,17 @@ export default function Login() {
           </div>
         </Hidden>
         <form onSubmit={handleLogin}>
+          <div className={classes.demoLoginCredential}>
+            <Typography align="center" variant="h6" gutterBottom>
+              <b>For Demo Login</b>
+            </Typography>
+            <Typography align="center">
+              <b>EMAIL:</b> soham.bowman@example.com
+            </Typography>
+            <Typography align="center">
+              <b>PASSWORD:</b> admin123
+            </Typography>
+          </div>
           <div className={classes.textField}>
             <TextField
               label="EMAIL"
