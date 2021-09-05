@@ -8,7 +8,7 @@ import { BACKEND_URL } from '../../src/global';
 export default function Home({ data }) {
   return (
     <Container>
-      <Header hideSearchField />
+      <Header hideUnnecessaryField />
       <BlogDetail {...data.data} />
       <Footer />
     </Container>

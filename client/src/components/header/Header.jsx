@@ -13,11 +13,12 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import SortBlog from '../sort-blog/SortBlog';
 
 export default function Header({
   blogs = [],
   setBlogs = () => {},
-  hideSearchField = false,
+  hideUnnecessaryField = false,
 }) {
   const classes = useHeaderStyles();
   const router = useRouter();
@@ -91,7 +92,7 @@ export default function Header({
               log
             </Typography>
           </div>
-          {!hideSearchField && (
+          {!hideUnnecessaryField && (
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -109,6 +110,9 @@ export default function Header({
           )}
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            {!hideUnnecessaryField && (
+              <SortBlog blogs={blogs} setBlogs={setBlogs} />
+            )}
             <IconButton aria-label="add new blog" color="primary">
               <AddCircleOutlineIcon />
             </IconButton>
