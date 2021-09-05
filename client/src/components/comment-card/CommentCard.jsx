@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import useCommentCardStyles from './styles';
 import { BACKEND_URL } from '../../global';
 import { getBlogDate } from '../../utils/dates';
+import { Hidden } from '@material-ui/core';
 
 export default function CommentCard({ comment }) {
   const classes = useCommentCardStyles();
@@ -18,9 +19,11 @@ export default function CommentCard({ comment }) {
           <Typography color="primary" className={classes.authorName}>
             {comment.author.username}
           </Typography>
-          <Typography color="textSecondary" variant="caption">
-            {getBlogDate(comment.createdAt)}
-          </Typography>
+          <Hidden xsDown>
+            <Typography color="textSecondary" variant="caption">
+              {getBlogDate(comment.createdAt)}
+            </Typography>
+          </Hidden>
         </div>
         <Typography>{comment.body}</Typography>
       </div>
