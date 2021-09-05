@@ -6,8 +6,9 @@
 
 I made this blog app as my interview task for [Ekbana](https://ekbana.com/).
 so, I only done limited features that I was asked to do within **3 days**.
+I hope you'll like this and appreciate my effort.
 
-## Technologies Used
+## Technologies Used 💻
 
 ### Backend
 
@@ -22,11 +23,66 @@ so, I only done limited features that I was asked to do within **3 days**.
 - [Material-UI](https://material-ui.com/) as a UI component library
 - [react-markdown](https://github.com/remarkjs/react-markdown) as a markdown parser and renderer
 
-## Things to consider
+## Things to consider 🤔
 
 - Used own Backend.
 - Used **JavaScript** instead of **TypeScript** as I think for small projects and working alone, TypeScript is **overkill**.
 - Used Nextjs **SSR** for fetching **individual blog** and **blog list**.
 - Used Material-UI for **fast** and **easier** UI development.
-- No **State Management** library is used as I was running out of time.
+- No **State Management** library is used as I was running **out of time**.
 - The whole app is **responsive**.
+
+## Quick Start 🚀
+
+### Add a .env file in server folder
+
+```js
+NODE_ENV=development
+PORT=8000
+DATABASE=*your mongo database uri*
+DATABASE_PASSWORD=*your mongo database password*
+JWT_SECRET=*a secrect key*
+JWT_EXPIRES_IN=90d
+JWT_TOKEN_EXPIRES_IN=90
+```
+
+### Install client dependencies
+
+```js
+cd client
+yarn or yarn install
+```
+
+### Install server dependencies
+
+```js
+cd server
+yarn or yarn install
+```
+
+### I recommend to use Nextjs build version for speed
+
+```js
+cd client
+yarn build
+```
+
+### Run both client & server from root
+
+```js
+yarn dev
+```
+
+## App Info ℹ️
+
+### Author
+
+[Sujan Tamang](http://sujantmg.com.np)
+
+### Version
+
+1.0.0
+
+### License
+
+This project is licensed under the MIT License.
