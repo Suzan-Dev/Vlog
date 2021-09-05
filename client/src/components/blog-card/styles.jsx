@@ -2,9 +2,14 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   cardShadow: {
-    maxWidth: 300,
-    minWidth: 300,
+    maxWidth: 295,
+    minWidth: 295,
     height: '100%',
+
+    [theme.breakpoints.up('sm')]: {
+      maxWidth: 345,
+      minWidth: 345,
+    },
   },
   root: {
     boxShadow: `0 3px 1px ${theme.palette.primary.light}`,

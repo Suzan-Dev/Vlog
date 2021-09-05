@@ -141,11 +141,8 @@ export default function Header({
           </div>
           {!hideUnnecessaryField && (
             <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="🔍 Search…"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
