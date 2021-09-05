@@ -9,7 +9,12 @@ const useStyles = makeStyles((theme) => ({
     '& > div:not(:nth-child(4))': {
       borderBottom: '2px solid #eee',
       padding: theme.spacing(5, 0),
-      marginRight: theme.spacing(5),
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      '& > div:not(:nth-child(4))': {
+        marginRight: theme.spacing(5),
+      },
     },
   },
   authorDetail: {
@@ -24,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(1),
   },
   backBtn: {
-    marginTop: theme.spacing(5),
+    margin: theme.spacing(5, 0),
     cursor: 'pointer',
     display: 'inline-block',
 
@@ -38,7 +43,19 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   blogRightContainer: {
-    padding: theme.spacing(0, 5),
+    '& > div:first-child': {
+      height: '250px',
+    },
+
+    [theme.breakpoints.up('sm')]: {
+      '& > div:first-child': {
+        height: '400px',
+      },
+    },
+
+    [theme.breakpoints.up('lg')]: {
+      padding: theme.spacing(0, 5),
+    },
   },
 }));
 

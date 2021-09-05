@@ -88,7 +88,7 @@ export default function Header({
             <div>
               <Image src="/logo.svg" alt="Logo" width={30} height={30} />
             </div>
-            <Typography className={classes.title} variant="h6" noWrap>
+            <Typography className={classes.title} variant="h5" noWrap>
               log
             </Typography>
           </div>

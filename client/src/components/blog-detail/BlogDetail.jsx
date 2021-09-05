@@ -96,7 +96,6 @@ export default function BlogDetail({
           <div
             style={{
               background: `url(${`${BACKEND_URL}/${coverImage}`}) no-repeat center center/cover`,
-              height: '400px',
             }}
           />
           <PreviewMarkdown source={body} />
