@@ -19,7 +19,7 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>vlog - A Blogging Application</title>
+        <title>Vlog - A Blogging Application</title>
         <meta name="description" content="A blogging app made for developers" />
         <meta
           name="viewport"

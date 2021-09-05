@@ -1,4 +1,4 @@
-# vlog - A Blogging Application
+# Vlog - A Blogging Application
 
 I made this blog app as my interview task for [Ekbana](https://ekbana.com/).
 so, I only done limited features that I was asked to do.
@@ -16,7 +16,4 @@ so, I only done limited features that I was asked to do.
 
 - [Nextjs](https://nextjs.org/) as a React framework
 - [Material-UI](https://material-ui.com/) as a UI component library
-
-## Time Consuming Skipped Task
-
-- The blog needed plugins to look **good** so, I skipped it.
+- [react-markdown](https://github.com/remarkjs/react-markdown) as a markdown parser and renderer
