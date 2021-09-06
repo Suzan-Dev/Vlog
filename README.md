@@ -43,7 +43,7 @@ Also, You can view the task list assigned to me as I have put it there for you.
 git clone **https or ssh url**
 ```
 
-### Add a .env file in server folder
+### Add a .env file in the root of server folder
 
 ```js
 NODE_ENV=development
@@ -89,6 +89,8 @@ yarn start (After finish running **yarn build**)
 or
 yarn dev (For local development, not recommended when testing)
 ```
+
+Check in browser on [http://localhost:3000/](http://localhost:3000/)
 
 ## App Info ℹ️
 
