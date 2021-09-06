@@ -69,13 +69,6 @@ cd server
 yarn or yarn install
 ```
 
-### I recommend to use Nextjs build version just for testing
-
-```js
-cd client
-yarn build
-```
-
 ### Run server in one terminal
 
 ```js
@@ -91,7 +84,7 @@ yarn dev (For local development, not recommended when testing)
 ```js
 cd client
 
-yarn build (Recommended when testing)
+yarn build (I recommend to use Nextjs build version just for testing)
 yarn start (After finish running **yarn build**)
 or
 yarn dev (For local development, not recommended when testing)

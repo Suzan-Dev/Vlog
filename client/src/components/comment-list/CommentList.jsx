@@ -28,7 +28,7 @@ export default function CommentList({
     const commentData = await addComment(commentBody, blogId);
     if (commentData.status === 'Success') {
       const newCommentsArr = [...comments];
-      newCommentsArr.unshift({
+      newCommentsArr.push({
         ...commentData.data,
         author: {
           _id: userDetails._id,

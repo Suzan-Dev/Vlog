@@ -12,7 +12,7 @@ exports.getPostComments = catchAsync(async (req, res, next) => {
 
   const blogComments = await Comment.find({
     blog: id,
-  }).sort('-createdAt');
+  }).sort('createdAt');
 
   res
     .status(200)
