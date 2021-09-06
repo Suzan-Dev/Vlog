@@ -39,7 +39,7 @@ Also, You can view the task list assigned to me as I have put it there for you.
 ### Clone the repo
 
 ```js
-git clone *https or ssh url*
+git clone **https or ssh url**
 ```
 
 ### Add a .env file in server folder
@@ -47,9 +47,9 @@ git clone *https or ssh url*
 ```js
 NODE_ENV=development
 PORT=8000
-DATABASE=*your mongo database uri*
-DATABASE_PASSWORD=*your mongo database password*
-JWT_SECRET=*a secrect key*
+DATABASE=**your mongo database uri**
+DATABASE_PASSWORD=**your mongo database password**
+JWT_SECRET=**a secrect key**
 JWT_EXPIRES_IN=90d
 JWT_TOKEN_EXPIRES_IN=90
 ```
@@ -75,12 +75,22 @@ cd client
 yarn build
 ```
 
-### Run both client & server from root
+### Run server in one terminal
 
 ```js
-yarn start (If you ran **yarn build**)
+cd server
+yarn dev
+```
+
+### Run client in another terminal
+
+```js
+cd client
+
+yarn build (Recommended when testing)
+yarn start (After finish running **yarn build**)
 or
-yarn dev (For local development)
+yarn dev (For local development, not recommended when testing)
 ```
 
 ## App Info ℹ️
