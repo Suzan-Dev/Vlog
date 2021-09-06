@@ -8,7 +8,11 @@ import { alertFirstSentence, BACKEND_URL } from '../../global';
 import { getUserDetails } from '../../utils/storage';
 import { addComment } from '../../api/comments';
 
-export default function CommentList({ comments = [], setComments = () => {} }) {
+export default function CommentList({
+  comments = [],
+  setComments = () => {},
+  blogId = '',
+}) {
   const classes = useCommentListStyles();
 
   const [userDetails, setUserDetails] = React.useState(null);
@@ -21,7 +25,7 @@ export default function CommentList({ comments = [], setComments = () => {} }) {
       );
     }
 
-    const commentData = await addComment(commentBody, comments[0].blog);
+    const commentData = await addComment(commentBody, blogId);
     if (commentData.status === 'Success') {
       const newCommentsArr = [...comments];
       newCommentsArr.unshift({

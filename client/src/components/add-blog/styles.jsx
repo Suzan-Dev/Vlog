@@ -37,17 +37,17 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
     },
 
-    '& > label': {
-      opacity: 0,
-      transition: 'opacity 0.35s',
-    },
-
-    '&:hover > label': {
-      opacity: 1,
-    },
-
     [theme.breakpoints.up('sm')]: {
       height: '350px',
+
+      '& > label': {
+        opacity: 0,
+        transition: 'opacity 0.35s',
+      },
+
+      '&:hover > label': {
+        opacity: 1,
+      },
     },
   },
   input: {

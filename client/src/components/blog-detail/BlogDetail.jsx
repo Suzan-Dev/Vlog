@@ -100,7 +100,11 @@ export default function BlogDetail({
             }}
           />
           <PreviewMarkdown source={body} />
-          <CommentList comments={comments} setComments={setComments} />
+          <CommentList
+            comments={comments}
+            setComments={setComments}
+            blogId={_id}
+          />
         </Grid>
       </Grid>
     </div>

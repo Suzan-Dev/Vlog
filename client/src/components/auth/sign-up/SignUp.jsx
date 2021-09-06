@@ -74,7 +74,7 @@ export default function SignUp() {
       );
       if (signUpData.status === 'Success') {
         localStorage.setItem('userDetails', JSON.stringify(signUpData.data));
-        document.cookie = `${TOKEN}=${loginData.token}`;
+        document.cookie = `${TOKEN}=${signUpData.token}`;
         router.push('/');
       } else {
         alert(`${alertFirstSentence}${signUpData.message}`);
