@@ -26,6 +26,25 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'relative',
+    borderRadius: 5,
+
+    '& > div': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+    },
+
+    '& > label': {
+      opacity: 0,
+      transition: 'opacity 0.35s',
+    },
+
+    '&:hover > label': {
+      opacity: 1,
+    },
 
     [theme.breakpoints.up('sm')]: {
       height: '350px',
@@ -75,6 +94,17 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.up('sm')]: {
         width: 'auto',
       },
+    },
+  },
+  supportsMarkdown: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    '& > p > a': {
+      margin: theme.spacing(0, 0.5),
+      color: theme.palette.primary.dark,
+      fontWeight: 'bold',
     },
   },
 }));

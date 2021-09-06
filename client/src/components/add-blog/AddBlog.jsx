@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
-import { Box, Tab, Tabs, TextField } from '@material-ui/core';
+import { Box, Tab, Tabs, TextField, Typography } from '@material-ui/core';
 import useAddBlogStyles from './styles';
 import CustomButton from '../button/Button';
 import PreviewMarkdown from '../preview-markdown/PreviewMarkdown';
@@ -19,6 +19,7 @@ export default function AddBlog() {
     tags: '',
   });
   const [blogBody, setBlogBody] = React.useState('');
+  const [imageSrc, setImageSrc] = React.useState('');
 
   const handleTabChange = (event, newValue) => {
     setValue(newValue);
@@ -28,9 +29,12 @@ export default function AddBlog() {
     setBlogBody(event.target.value);
   };
 
-  const handleFormData = (event) => {
-    console.log(event.target.files);
-    setValues({ ...values, coverImage: event.target.files[0] });
+  const handleBlogImage = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setImageSrc(URL.createObjectURL(file));
+    }
+    setValues({ ...values, coverImage: file });
   };
 
   const handleChange = (prop) => (event) => {
@@ -79,12 +83,17 @@ export default function AddBlog() {
   return (
     <div className={classes.inputFieldsContainer}>
       <div className={classes.uploadCoverBtn}>
+        <div
+          style={{
+            background: `url(${imageSrc}) no-repeat center center/cover`,
+          }}
+        />
         <input
           accept="image/*"
           className={classes.input}
           id="contained-button-file"
           type="file"
-          onChange={handleFormData}
+          onChange={handleBlogImage}
         />
         <label htmlFor="contained-button-file">
           <CustomButton component="span">Upload Cover Image</CustomButton>
@@ -137,6 +146,19 @@ export default function AddBlog() {
         <TabPanel value={value} index={1} className={classes.tabPanelTwo}>
           <PreviewMarkdown source={blogBody} />
         </TabPanel>
+        <div className={classes.supportsMarkdown}>
+          <Typography variant="body2">
+            Styling with
+            <a
+              href="https://www.markdownguide.org/basic-syntax/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Markdown
+            </a>
+            is supported
+          </Typography>
+        </div>
       </div>
       <div className={classes.addBlogBtn}>
         <CustomButton onClick={handleAddBlog}>Add Blog</CustomButton>

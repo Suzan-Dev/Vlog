@@ -32,6 +32,7 @@ Also, You can view the task list assigned to me as I have put it there for you.
 - Used Nextjs **SSR** for fetching **individual blog** and **blog list**.
 - Used Material-UI for **fast** and **easier** UI development.
 - No **State Management** library is used as I was running **out of time**.
+- UI is **inspired** by various **design resources** from internet.
 - The whole app is **responsive**.
 
 ## Quick Start 🚀
