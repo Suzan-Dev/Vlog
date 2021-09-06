@@ -1,12 +1,14 @@
 # Vlog - A Blogging Application
 
 <p align="center">
-  <img src="client/public/lighthouse-report.png">
+  <img src="https://raw.githubusercontent.com/Suzan-Dev/vlog/main/client/public/lighthouse-report.png">
 </p>
 
 I made this blog app as my interview task for [Ekbana](https://ekbana.com/).
-so, I only done limited features that I was asked to do within **3 days**.
-I hope you'll like this and appreciate my effort.
+so, I've only done **limited features** that I was asked to do within **3 days**.
+I hope you'll like this project and appreciate my effort.
+
+Also, You can view the task list assigned to me as I have put it there for you.
 
 ## Technologies Used 💻
 
@@ -34,6 +36,12 @@ I hope you'll like this and appreciate my effort.
 
 ## Quick Start 🚀
 
+### Clone the repo
+
+```js
+git clone *https or ssh url*
+```
+
 ### Add a .env file in server folder
 
 ```js
@@ -60,7 +68,7 @@ cd server
 yarn or yarn install
 ```
 
-### I recommend to use Nextjs build version for speed
+### I recommend to use Nextjs build version just for testing
 
 ```js
 cd client
@@ -70,7 +78,9 @@ yarn build
 ### Run both client & server from root
 
 ```js
-yarn dev
+yarn start (If you ran **yarn build**)
+or
+yarn dev (For local development)
 ```
 
 ## App Info ℹ️
