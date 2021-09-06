@@ -80,7 +80,10 @@ yarn build
 
 ```js
 cd server
-yarn dev
+
+yarn prod (Recommended when testing)
+or
+yarn dev (For local development, not recommended when testing)
 ```
 
 ### Run client in another terminal

@@ -1,5 +1,4 @@
 import React from 'react';
-// import { useRouter } from 'next/router';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import useCommentCardStyles from './styles';
@@ -9,7 +8,6 @@ import { Hidden } from '@material-ui/core';
 
 export default function CommentCard({ comment }) {
   const classes = useCommentCardStyles();
-  // const router = useRouter();
 
   return (
     <div className={classes.commentCardContainer}>
