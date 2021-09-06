@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { Container } from '@material-ui/core';
 import Header from '../src/components/header/Header';
