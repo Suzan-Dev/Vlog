@@ -20,7 +20,7 @@ export default function Home({ data }) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const res = await fetch(`${BACKEND_URL}/api/v1/en/blogs`);
   const data = await res.json();
 
